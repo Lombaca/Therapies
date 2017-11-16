@@ -149,6 +149,7 @@
             this.buttonSave.TabIndex = 14;
             this.buttonSave.Text = "Gravar";
             this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // FormTerapies
             // 

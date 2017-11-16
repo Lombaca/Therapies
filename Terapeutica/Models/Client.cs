@@ -24,6 +24,11 @@ namespace Terapeutica
             this.gender = gender;
         }
 
+        public static void addClientToDataBase()
+        {
+
+        }
+
         public string Name
         {
             get

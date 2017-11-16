@@ -34,6 +34,12 @@ namespace Terapeutica
             this.clientToEdit = client;
             InitializeComponent();
             this.Text = client.Name;
+            if (clientToEdit.Medications != null)
+            {
+                medications = clientToEdit.Medications;
+                updateForm();
+            }
+
         }
 
         public FormTerapies()
@@ -59,11 +65,16 @@ namespace Terapeutica
             listBoxMedications.Items.Clear();
             foreach (Medication med in medications)
             {
-
-                String posologyStr = String.Format("{0} - {1} - {2}", med.Qtd, med.Name, med.Posology);
+                String posologyStr = String.Format("{0} - {1} - {2}",
+                    med.Qtd, med.Name, med.Posology);
                 listBoxMedications.Items.Add(posologyStr);
             }
         }
 
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            clientToEdit.Medications = medications;
+            Close();
+        }
     }
 }
