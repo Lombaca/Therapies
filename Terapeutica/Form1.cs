@@ -16,10 +16,14 @@ namespace Terapeutica
         //Modelo de dados
         List<Client> clients = new List<Client>();
 
+        DataHelper datahelper;
+
         public Form1()
         {
             InitializeComponent();
-            
+            datahelper = new DataHelper();
+            clients = Client.getClientsList(datahelper);
+            updateForm();
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -30,6 +34,9 @@ namespace Terapeutica
                 getCheckedGender());
 
             clients.Add(clientToAdd);
+
+            Client.addToDataBase(datahelper, clientToAdd);
+
             updateForm();
         }
 

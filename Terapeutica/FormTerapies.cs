@@ -26,7 +26,7 @@ namespace Terapeutica
                 clientToEdit = value;
             }
         }
-
+        //Modelo de dados
         List<Medication> medications=new List<Medication>();
 
         public FormTerapies(Client client)

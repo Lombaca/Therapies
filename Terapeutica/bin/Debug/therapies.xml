@@ -1,0 +1,21 @@
+<?xml version="1.0" standalone="yes"?>
+<therapies_dataset>
+  <datatable_clients>
+    <name>adgdsrgdsg dfbfd</name>
+    <birthday>16/11/2017 17:19:49</birthday>
+    <gender>male</gender>
+    <id>1510852800464</id>
+  </datatable_clients>
+  <datatable_clients>
+    <name>fgdzxgdzf f df</name>
+    <birthday>16/11/2017 17:40:27</birthday>
+    <gender>female</gender>
+    <id>1510854035170</id>
+  </datatable_clients>
+  <datatable_clients>
+    <name> zdf zdf zdf df</name>
+    <birthday>16/11/2017 17:40:27</birthday>
+    <gender>female</gender>
+    <id>1510854038061</id>
+  </datatable_clients>
+</therapies_dataset>
