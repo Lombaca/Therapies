@@ -26,6 +26,18 @@ namespace Terapeutica
             this.id = Utils.CurrentTimeMillis();
         }
 
+        public Client(string name, DateTime birthday, GenderType gender, long id)
+        {
+            this.name = name;
+            this.birthday = birthday;
+            this.gender = gender;
+            this.id = id;
+        }
+
+
+        //CRUD
+
+        //Create
         public static void addToDataBase(DataHelper datahelper, Client client)
         {
             DataRow datarow = datahelper.TableClients.NewRow();
@@ -36,6 +48,43 @@ namespace Terapeutica
             datarow[DataHelper.CLIENTS_ID] = client.Id;
 
             datahelper.TableClients.Rows.Add(datarow);
+            datahelper.save();
+        }
+
+        //Read
+        public static Client readOnDataBase(DataHelper datahelper, int index)
+        {
+            Client client;
+
+            DataRow datarow = datahelper.TableClients.Rows[index];
+
+            client = new Client(
+                 (String)datarow[DataHelper.CLIENTS_NAME],
+                 DateTime.Parse((String)datarow[DataHelper.CLIENTS_BIRTHDAY]),
+                 parseGender((String)datarow[DataHelper.CLIENTS_GENDER]),
+                 long.Parse((String)datarow[DataHelper.CLIENTS_ID]));
+
+            return client;
+
+        }
+
+        //Update
+        public static void editOnDataBase(DataHelper datahelper, Client client, int index)
+        {
+            DataRow datarow = datahelper.TableClients.Rows[index];
+
+            datarow[DataHelper.CLIENTS_NAME] = client.Name;
+            datarow[DataHelper.CLIENTS_BIRTHDAY] = client.Birthday;
+            datarow[DataHelper.CLIENTS_GENDER] = client.Gender;
+            datarow[DataHelper.CLIENTS_ID] = client.Id;
+
+            datahelper.save();
+        }
+
+        //Delete
+        public static void removeFromDataBase(DataHelper datahelper, int indexToRemove)
+        {
+            datahelper.TableClients.Rows.RemoveAt(indexToRemove);
             datahelper.save();
         }
 
@@ -55,6 +104,14 @@ namespace Terapeutica
             return clients;
         }
 
+        public static GenderType parseGender(String strGender)
+        {
+            if (strGender.CompareTo("male") == 0) {
+                return GenderType.male;
+            } else {
+                return GenderType.female;
+            }
+        }
 
         public string Name
         {

@@ -14,16 +14,18 @@ namespace Terapeutica
     {
 
         //Modelo de dados
-        List<Client> clients = new List<Client>();
 
+        //Modelo de dados
         DataHelper datahelper;
 
         public Form1()
         {
             InitializeComponent();
             datahelper = new DataHelper();
-            clients = Client.getClientsList(datahelper);
-            updateForm();
+            dataGridViewClients.DataSource = datahelper.DataSet;
+            dataGridViewClients.DataMember = DataHelper.DATATABLE_CLIENTS;
+            dataGridViewClients.AutoGenerateColumns = true;
+            dataGridViewClients.AutoResizeColumns();
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -33,27 +35,16 @@ namespace Terapeutica
                 dateTimePickerBirthDate.Value,
                 getCheckedGender());
 
-            clients.Add(clientToAdd);
-
             Client.addToDataBase(datahelper, clientToAdd);
-
-            updateForm();
-        }
-
-        void updateForm() {
-            listBoxClientes.Items.Clear();
-            foreach (Client client in clients){
-                listBoxClientes.Items.Add(client.Name);
-            }
         }
 
         private void buttonDel_Click(object sender, EventArgs e)
         {
-            int indexToRemove = listBoxClientes.SelectedIndex;
+            int indexToRemove = dataGridViewClients.CurrentCell.RowIndex;// listBoxClientes.SelectedIndex;
             if (indexToRemove > -1)
             {
-                clients.RemoveAt(indexToRemove);
-                updateForm();
+                //clients.RemoveAt(indexToRemove);
+                Client.removeFromDataBase(datahelper, indexToRemove);
             }
             else
             {
@@ -73,8 +64,7 @@ namespace Terapeutica
         private void buttonEdit_Click(object sender, EventArgs e)
         {
 
-            int index;
-            index = listBoxClientes.SelectedIndex;
+            int index = dataGridViewClients.CurrentCell.RowIndex; // listBoxClientes.SelectedIndex;
             if (index > -1)
             {
                 DialogResult result = MessageBox.Show("Tem a certeza que quer Editar o cliente seleccionado?", 
@@ -82,11 +72,13 @@ namespace Terapeutica
                     MessageBoxButtons.OKCancel);
                 if (result == DialogResult.OK)
                 {
-                    Client clientToedit = clients[index];
-                    clientToedit.Name = textBoxName.Text;
-                    clientToedit.Birthday = dateTimePickerBirthDate.Value;
-                    clientToedit.Gender = getCheckedGender();
-                    updateForm();
+
+                    Client clientToEdit = new Client(
+                        textBoxName.Text,
+                        dateTimePickerBirthDate.Value,
+                        getCheckedGender());
+                  
+                    Client.editOnDataBase(datahelper, clientToEdit, index);
                 }
             }
             else
@@ -97,11 +89,16 @@ namespace Terapeutica
 
         private void listBoxClientes_DoubleClick(object sender, EventArgs e)
         {
-            int index;
-            index = listBoxClientes.SelectedIndex;
+
+        }
+
+        private void dataGridViewClients_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            int index = dataGridViewClients.CurrentCell.RowIndex;
             if (index > -1)
             {
-                FormTerapies formTerapies = new FormTerapies(clients[index]);
+                Client client = Client.readOnDataBase(datahelper, index);
+                FormTerapies formTerapies = new FormTerapies(client);
                 formTerapies.Show();
             }
         }

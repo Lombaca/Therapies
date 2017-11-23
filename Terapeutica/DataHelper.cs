@@ -11,11 +11,18 @@ namespace Terapeutica
 {
     public class DataHelper
     {
-
+        public static string DATATABLE_CLIENTS = "datatable_clients";
         public static string CLIENTS_NAME = "name";
         public static string CLIENTS_BIRTHDAY = "birthday";
         public static string CLIENTS_GENDER = "gender";
         public static string CLIENTS_ID = "id";
+
+        public static string MEDICATIONS_QTD        = "qtd"       ;  
+        public static string MEDICATIONS_POSOLOGY   = "posology"  ;  
+        public static string MEDICATIONS_CLIENT_ID  = "client_id" ;
+        public static string MEDICATIONS_ID         = "id";  
+
+        public static string DATATABLE_TERAPIES = "datatable_medications";
 
         DataSet dataSet;
 
@@ -23,6 +30,7 @@ namespace Terapeutica
         DataTable tableMedicactions;
 
         String filePath = "therapies.xml";
+        
 
         public DataTable TableClients
         {
@@ -49,24 +57,37 @@ namespace Terapeutica
             }
         }
 
+        public DataSet DataSet
+        {
+            get
+            {
+                return dataSet;
+            }
+
+            set
+            {
+                dataSet = value;
+            }
+        }
+
         public DataHelper()
         {
-            dataSet = new DataSet("therapies_dataset");
+            DataSet = new DataSet("therapies_dataset");
 
-            TableClients = new DataTable("datatable_clients");
+            TableClients = new DataTable(DATATABLE_CLIENTS);
             TableClients.Columns.Add(CLIENTS_NAME);
             TableClients.Columns.Add(CLIENTS_BIRTHDAY);
             TableClients.Columns.Add(CLIENTS_GENDER);
             TableClients.Columns.Add(CLIENTS_ID);
 
-            TableMedicactions = new DataTable("datatable_medications");
-            TableMedicactions.Columns.Add("qtd");
-            TableMedicactions.Columns.Add("posology");
-            TableMedicactions.Columns.Add("client_id");
-            TableMedicactions.Columns.Add("id");
+            TableMedicactions = new DataTable(DATATABLE_TERAPIES);
+            TableMedicactions.Columns.Add(MEDICATIONS_QTD      );
+            TableMedicactions.Columns.Add(MEDICATIONS_POSOLOGY );
+            TableMedicactions.Columns.Add(MEDICATIONS_CLIENT_ID);
+            TableMedicactions.Columns.Add(MEDICATIONS_ID);
 
-            dataSet.Tables.Add(TableClients);
-            dataSet.Tables.Add(TableMedicactions);
+            DataSet.Tables.Add(TableClients);
+            DataSet.Tables.Add(TableMedicactions);
 
             load();
         }
@@ -75,14 +96,14 @@ namespace Terapeutica
         
         public void save()
         {
-            dataSet.WriteXml(filePath);
+            DataSet.WriteXml(filePath);
         }
 
         public void load()
         {
             try
             {
-                dataSet.ReadXml(filePath);
+                DataSet.ReadXml(filePath);
             }catch(FileNotFoundException e)
             {
 

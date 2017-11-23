@@ -13,7 +13,6 @@ namespace Terapeutica
     public partial class FormTerapies : Form
     {
         Client clientToEdit;
-
         public Client ClientToEdit
         {
             get
@@ -27,18 +26,20 @@ namespace Terapeutica
             }
         }
         //Modelo de dados
-        List<Medication> medications=new List<Medication>();
+        DataHelper datahelper;
 
         public FormTerapies(Client client)
         {
             this.clientToEdit = client;
             InitializeComponent();
             this.Text = client.Name;
-            if (clientToEdit.Medications != null)
-            {
-                medications = clientToEdit.Medications;
-                updateForm();
-            }
+
+            datahelper = new DataHelper();
+
+            dataGridViewTerapies.DataSource = datahelper.DataSet;
+            dataGridViewTerapies.DataMember = DataHelper.DATATABLE_TERAPIES;
+            dataGridViewTerapies.AutoGenerateColumns = true;
+            dataGridViewTerapies.AutoResizeColumns();
 
         }
 
@@ -53,28 +54,14 @@ namespace Terapeutica
             Medication med = new Medication(
                 textBoxMedName.Text,
                 (float)numericUpDownQtd.Value,
-                textBoxPosology.Text
+                textBoxPosology.Text,
+                clientToEdit.Id
                 );
-            medications.Add(med);
-            updateForm();
+
+            Medication.addToDataBase(datahelper, med);
+            
         }
 
 
-        void updateForm()
-        {
-            listBoxMedications.Items.Clear();
-            foreach (Medication med in medications)
-            {
-                String posologyStr = String.Format("{0} - {1} - {2}",
-                    med.Qtd, med.Name, med.Posology);
-                listBoxMedications.Items.Add(posologyStr);
-            }
-        }
-
-        private void buttonSave_Click(object sender, EventArgs e)
-        {
-            clientToEdit.Medications = medications;
-            Close();
-        }
     }
 }

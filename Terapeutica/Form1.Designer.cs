@@ -36,9 +36,10 @@
             this.dateTimePickerBirthDate = new System.Windows.Forms.DateTimePicker();
             this.radioButtonMale = new System.Windows.Forms.RadioButton();
             this.radioButtonFemale = new System.Windows.Forms.RadioButton();
-            this.listBoxClientes = new System.Windows.Forms.ListBox();
             this.buttonEdit = new System.Windows.Forms.Button();
             this.buttonDel = new System.Windows.Forms.Button();
+            this.dataGridViewClients = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClients)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonAdd
@@ -124,18 +125,6 @@
             this.radioButtonFemale.Text = "Femenino";
             this.radioButtonFemale.UseVisualStyleBackColor = true;
             // 
-            // listBoxClientes
-            // 
-            this.listBoxClientes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBoxClientes.FormattingEnabled = true;
-            this.listBoxClientes.Location = new System.Drawing.Point(16, 12);
-            this.listBoxClientes.Name = "listBoxClientes";
-            this.listBoxClientes.Size = new System.Drawing.Size(378, 212);
-            this.listBoxClientes.TabIndex = 8;
-            this.listBoxClientes.DoubleClick += new System.EventHandler(this.listBoxClientes_DoubleClick);
-            // 
             // buttonEdit
             // 
             this.buttonEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -158,14 +147,26 @@
             this.buttonDel.UseVisualStyleBackColor = true;
             this.buttonDel.Click += new System.EventHandler(this.buttonDel_Click);
             // 
+            // dataGridViewClients
+            // 
+            this.dataGridViewClients.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewClients.Location = new System.Drawing.Point(16, 12);
+            this.dataGridViewClients.Name = "dataGridViewClients";
+            this.dataGridViewClients.Size = new System.Drawing.Size(378, 216);
+            this.dataGridViewClients.TabIndex = 11;
+            this.dataGridViewClients.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewClients_CellMouseDoubleClick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(406, 341);
+            this.Controls.Add(this.dataGridViewClients);
             this.Controls.Add(this.buttonDel);
             this.Controls.Add(this.buttonEdit);
-            this.Controls.Add(this.listBoxClientes);
             this.Controls.Add(this.radioButtonFemale);
             this.Controls.Add(this.radioButtonMale);
             this.Controls.Add(this.dateTimePickerBirthDate);
@@ -176,6 +177,7 @@
             this.Controls.Add(this.buttonAdd);
             this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClients)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -191,9 +193,9 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerBirthDate;
         private System.Windows.Forms.RadioButton radioButtonMale;
         private System.Windows.Forms.RadioButton radioButtonFemale;
-        private System.Windows.Forms.ListBox listBoxClientes;
         private System.Windows.Forms.Button buttonEdit;
         private System.Windows.Forms.Button buttonDel;
+        private System.Windows.Forms.DataGridView dataGridViewClients;
     }
 }
 

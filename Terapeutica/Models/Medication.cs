@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,13 +12,31 @@ namespace Terapeutica
         String name;
         float qtd;
         String posology;
-        int id;
-
-        public Medication(string name, float qtd, string posology)
+        long id;
+        long clientId;
+        
+        public Medication(string name, float qtd, string posology, long clientId)
         {
             this.name = name;
             this.qtd = qtd;
             this.posology = posology;
+            this.clientId = clientId;
+            this.id = Utils.CurrentTimeMillis();
+        }
+
+
+        //Create
+        public static void addToDataBase(DataHelper datahelper, Medication medication)
+        {
+            DataRow datarow = datahelper.TableMedicactions.NewRow();
+
+            datarow[DataHelper.MEDICATIONS_QTD      ] = medication.Qtd;
+            datarow[DataHelper.MEDICATIONS_POSOLOGY ] = medication.Posology;
+            datarow[DataHelper.MEDICATIONS_CLIENT_ID] = medication.ClientId;
+            datarow[DataHelper.MEDICATIONS_ID       ] = medication.Id;
+
+            datahelper.TableMedicactions.Rows.Add(datarow);
+            datahelper.save();
         }
 
         public string Name
@@ -59,7 +78,7 @@ namespace Terapeutica
             }
         }
 
-        public int Id
+        public long Id
         {
             get
             {
@@ -69,6 +88,19 @@ namespace Terapeutica
             set
             {
                 id = value;
+            }
+        }
+
+        public long ClientId
+        {
+            get
+            {
+                return clientId;
+            }
+
+            set
+            {
+                clientId = value;
             }
         }
     }

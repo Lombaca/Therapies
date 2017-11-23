@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBoxMedications = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxMedName = new System.Windows.Forms.TextBox();
             this.numericUpDownQtd = new System.Windows.Forms.NumericUpDown();
@@ -40,16 +39,10 @@
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
+            this.dataGridViewTerapies = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQtd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTerapies)).BeginInit();
             this.SuspendLayout();
-            // 
-            // listBoxMedications
-            // 
-            this.listBoxMedications.FormattingEnabled = true;
-            this.listBoxMedications.Location = new System.Drawing.Point(12, 12);
-            this.listBoxMedications.Name = "listBoxMedications";
-            this.listBoxMedications.Size = new System.Drawing.Size(403, 238);
-            this.listBoxMedications.TabIndex = 0;
             // 
             // label1
             // 
@@ -149,13 +142,24 @@
             this.buttonSave.TabIndex = 14;
             this.buttonSave.Text = "Gravar";
             this.buttonSave.UseVisualStyleBackColor = true;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
+            // dataGridViewTerapies
+            // 
+            this.dataGridViewTerapies.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewTerapies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewTerapies.Location = new System.Drawing.Point(12, 12);
+            this.dataGridViewTerapies.Name = "dataGridViewTerapies";
+            this.dataGridViewTerapies.Size = new System.Drawing.Size(403, 239);
+            this.dataGridViewTerapies.TabIndex = 16;
             // 
             // FormTerapies
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(427, 343);
+            this.Controls.Add(this.dataGridViewTerapies);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonDel);
@@ -167,18 +171,16 @@
             this.Controls.Add(this.numericUpDownQtd);
             this.Controls.Add(this.textBoxMedName);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listBoxMedications);
             this.Name = "FormTerapies";
             this.Text = "FormTerapies";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQtd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTerapies)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox listBoxMedications;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxMedName;
         private System.Windows.Forms.NumericUpDown numericUpDownQtd;
@@ -190,5 +192,6 @@
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.DataGridView dataGridViewTerapies;
     }
 }
