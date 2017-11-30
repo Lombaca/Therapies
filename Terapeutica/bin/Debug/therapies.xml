@@ -42,4 +42,28 @@
     <client_id>1511457078440</client_id>
     <id>1511459789952</id>
   </datatable_medications>
+  <datatable_medications>
+    <qtd>1</qtd>
+    <posology>sdfsefsd</posology>
+    <client_id>1511457078440</client_id>
+    <id>1512058435306</id>
+  </datatable_medications>
+  <datatable_medications>
+    <qtd>1</qtd>
+    <posology>sdfsefsd</posology>
+    <client_id>1511457078440</client_id>
+    <id>1512058441978</id>
+  </datatable_medications>
+  <datatable_medications>
+    <qtd>1</qtd>
+    <posology>232</posology>
+    <client_id>1511457078440</client_id>
+    <id>1512058454994</id>
+  </datatable_medications>
+  <datatable_medications>
+    <qtd>0</qtd>
+    <posology>g34g34g33</posology>
+    <client_id>1511455508437</client_id>
+    <id>1512058471449</id>
+  </datatable_medications>
 </therapies_dataset>

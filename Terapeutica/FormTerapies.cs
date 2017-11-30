@@ -36,8 +36,14 @@ namespace Terapeutica
 
             datahelper = new DataHelper();
 
-            dataGridViewTerapies.DataSource = datahelper.DataSet;
-            dataGridViewTerapies.DataMember = DataHelper.DATATABLE_TERAPIES;
+
+            DataView dataView = datahelper.DataSet.Tables[DataHelper.DATATABLE_TERAPIES].DefaultView;
+            dataView.RowFilter = string.Format("[{0}] = '{1}'", DataHelper.MEDICATIONS_CLIENT_ID, client.Id);
+
+
+
+            dataGridViewTerapies.DataSource = dataView;
+
             dataGridViewTerapies.AutoGenerateColumns = true;
             dataGridViewTerapies.AutoResizeColumns();
 
