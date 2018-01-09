@@ -29,7 +29,7 @@ namespace Terapeutica
         public static void addToDataBase(DataHelper datahelper, Medication medication)
         {
             DataRow datarow = datahelper.TableMedicactions.NewRow();
-
+            datarow[DataHelper.MEDICATIONS_NAME] = medication.name;
             datarow[DataHelper.MEDICATIONS_QTD      ] = medication.Qtd;
             datarow[DataHelper.MEDICATIONS_POSOLOGY ] = medication.Posology;
             datarow[DataHelper.MEDICATIONS_CLIENT_ID] = medication.ClientId;

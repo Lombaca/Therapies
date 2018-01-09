@@ -17,6 +17,7 @@ namespace Terapeutica
         public static string CLIENTS_GENDER = "gender";
         public static string CLIENTS_ID = "id";
 
+        public static string MEDICATIONS_NAME       = "name";
         public static string MEDICATIONS_QTD        = "qtd"       ;  
         public static string MEDICATIONS_POSOLOGY   = "posology"  ;  
         public static string MEDICATIONS_CLIENT_ID  = "client_id" ;
@@ -81,6 +82,7 @@ namespace Terapeutica
             TableClients.Columns.Add(CLIENTS_ID);
 
             TableMedicactions = new DataTable(DATATABLE_TERAPIES);
+            TableMedicactions.Columns.Add(MEDICATIONS_NAME);
             TableMedicactions.Columns.Add(MEDICATIONS_QTD      );
             TableMedicactions.Columns.Add(MEDICATIONS_POSOLOGY );
             TableMedicactions.Columns.Add(MEDICATIONS_CLIENT_ID);

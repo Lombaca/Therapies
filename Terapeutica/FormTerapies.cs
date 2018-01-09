@@ -36,14 +36,9 @@ namespace Terapeutica
 
             datahelper = new DataHelper();
 
-
             DataView dataView = datahelper.DataSet.Tables[DataHelper.DATATABLE_TERAPIES].DefaultView;
             dataView.RowFilter = string.Format("[{0}] = '{1}'", DataHelper.MEDICATIONS_CLIENT_ID, client.Id);
-
-
-
             dataGridViewTerapies.DataSource = dataView;
-
             dataGridViewTerapies.AutoGenerateColumns = true;
             dataGridViewTerapies.AutoResizeColumns();
 
@@ -68,6 +63,9 @@ namespace Terapeutica
             
         }
 
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

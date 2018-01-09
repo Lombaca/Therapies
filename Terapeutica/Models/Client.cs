@@ -95,13 +95,34 @@ namespace Terapeutica
             foreach(DataRow dataRow in datahelper.TableClients.Rows){
 
                 String name = (String)dataRow[DataHelper.CLIENTS_NAME];
-                //DateTime birthday = (DateTime)dataRow[DataHelper.CLIENTS_BIRTHDAY];
-                //GenderType gender= (GenderType)dataRow[DataHelper.CLIENTS_GENDER];
+                DateTime birthday = DateTime.Parse((String)dataRow[DataHelper.CLIENTS_BIRTHDAY]);
+                GenderType gender = parseGender((String)dataRow[DataHelper.CLIENTS_GENDER]);
+                long id=   long.Parse((String)dataRow[DataHelper.CLIENTS_ID]);
 
-                clients.Add(new Client(name, DateTime.Now, GenderType.male));
+                clients.Add(new Client(name, DateTime.Now, gender, id));
             }
 
             return clients;
+        }
+
+        public static List<Medication> getMedications(DataHelper datahelper, long id)
+        {
+            List<Medication> medications = new List<Medication>();
+            DataView dataView = datahelper.DataSet.Tables[DataHelper.DATATABLE_TERAPIES].DefaultView;
+
+            dataView.RowFilter = string.Format("{0} = '{1}'", DataHelper.MEDICATIONS_CLIENT_ID, id);
+            foreach(DataRowView drv in dataView)
+            {
+                DataRow row = drv.Row;
+                string name = (string)row[DataHelper.MEDICATIONS_NAME];
+                float qtd = float.Parse((string)row[DataHelper.MEDICATIONS_QTD]);
+                string posology = (string)row[DataHelper.MEDICATIONS_POSOLOGY];
+                long clientId = long.Parse((string)row[DataHelper.MEDICATIONS_CLIENT_ID]);
+                Medication med = new Medication(name, 1, posology, clientId);
+                medications.Add(med);
+            }
+            return medications;
+                 
         }
 
         public static GenderType parseGender(String strGender)

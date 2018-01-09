@@ -39,6 +39,7 @@
             this.buttonEdit = new System.Windows.Forms.Button();
             this.buttonDel = new System.Windows.Forms.Button();
             this.dataGridViewClients = new System.Windows.Forms.DataGridView();
+            this.buttonExport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClients)).BeginInit();
             this.SuspendLayout();
             // 
@@ -159,11 +160,22 @@
             this.dataGridViewClients.TabIndex = 11;
             this.dataGridViewClients.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewClients_CellMouseDoubleClick);
             // 
+            // buttonExport
+            // 
+            this.buttonExport.Location = new System.Drawing.Point(12, 313);
+            this.buttonExport.Name = "buttonExport";
+            this.buttonExport.Size = new System.Drawing.Size(75, 23);
+            this.buttonExport.TabIndex = 12;
+            this.buttonExport.Text = "Exportar";
+            this.buttonExport.UseVisualStyleBackColor = true;
+            this.buttonExport.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(406, 341);
+            this.Controls.Add(this.buttonExport);
             this.Controls.Add(this.dataGridViewClients);
             this.Controls.Add(this.buttonDel);
             this.Controls.Add(this.buttonEdit);
@@ -196,6 +208,7 @@
         private System.Windows.Forms.Button buttonEdit;
         private System.Windows.Forms.Button buttonDel;
         private System.Windows.Forms.DataGridView dataGridViewClients;
+        private System.Windows.Forms.Button buttonExport;
     }
 }
 

@@ -1,69 +1,36 @@
 <?xml version="1.0" standalone="yes"?>
 <therapies_dataset>
   <datatable_clients>
-    <name>ergdfz</name>
-    <birthday>23/11/2017 17:10:02</birthday>
-    <gender>female</gender>
-    <id>1511457030833</id>
-  </datatable_clients>
-  <datatable_clients>
-    <name>fgdzxgdzf f df</name>
-    <birthday>16/11/2017 17:40:27</birthday>
-    <gender>female</gender>
-    <id>1510854035170</id>
-  </datatable_clients>
-  <datatable_clients>
-    <name>dfhdgsdgsedgw dfhth</name>
-    <birthday>23/11/2017 17:11:04</birthday>
-    <gender>female</gender>
-    <id>1511457078440</id>
-  </datatable_clients>
-  <datatable_clients>
-    <name>asdfasdvasdavas</name>
-    <birthday>23/11/2017 16:43:38</birthday>
+    <name>Lourenço Gomes</name>
+    <birthday>09/01/1998 16:37:31</birthday>
     <gender>male</gender>
-    <id>1511455508437</id>
+    <id>1515515871597</id>
   </datatable_clients>
   <datatable_clients>
-    <name>dfsdfgs</name>
-    <birthday>23/11/2017 17:56:15</birthday>
-    <gender>female</gender>
-    <id>1511459781373</id>
+    <name>Alberto Pinto</name>
+    <birthday>09/01/1998 16:37:31</birthday>
+    <gender>male</gender>
+    <id>1515515898645</id>
   </datatable_clients>
   <datatable_medications>
+    <name>Benuron</name>
     <qtd>1</qtd>
-    <posology>sdgsdg</posology>
-    <client_id>0</client_id>
-    <id>0</id>
+    <posology>ao acordar</posology>
+    <client_id>1515515871597</client_id>
+    <id>1515515924583</id>
   </datatable_medications>
   <datatable_medications>
+    <name>Brufen</name>
     <qtd>1</qtd>
-    <posology>sdfbvsdb</posology>
-    <client_id>1511457078440</client_id>
-    <id>1511459789952</id>
+    <posology>ao deitar</posology>
+    <client_id>1515515871597</client_id>
+    <id>1515515937782</id>
   </datatable_medications>
   <datatable_medications>
+    <name>Benuron</name>
     <qtd>1</qtd>
-    <posology>sdfsefsd</posology>
-    <client_id>1511457078440</client_id>
-    <id>1512058435306</id>
-  </datatable_medications>
-  <datatable_medications>
-    <qtd>1</qtd>
-    <posology>sdfsefsd</posology>
-    <client_id>1511457078440</client_id>
-    <id>1512058441978</id>
-  </datatable_medications>
-  <datatable_medications>
-    <qtd>1</qtd>
-    <posology>232</posology>
-    <client_id>1511457078440</client_id>
-    <id>1512058454994</id>
-  </datatable_medications>
-  <datatable_medications>
-    <qtd>0</qtd>
-    <posology>g34g34g33</posology>
-    <client_id>1511455508437</client_id>
-    <id>1512058471449</id>
+    <posology>ao almoço</posology>
+    <client_id>1515515898645</client_id>
+    <id>1515515967877</id>
   </datatable_medications>
 </therapies_dataset>

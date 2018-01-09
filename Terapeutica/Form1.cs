@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Terapeutica
 {
@@ -100,6 +101,39 @@ namespace Terapeutica
                 Client client = Client.readOnDataBase(datahelper, index);
                 FormTerapies formTerapies = new FormTerapies(client);
                 formTerapies.Show();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sv = new SaveFileDialog();
+            sv.FileName = "*";
+            sv.DefaultExt = "csv";
+            sv.ValidateNames = true;
+
+            sv.Filter = "CSV File (.csv)|*.csv";
+            ;
+            if (sv.ShowDialog() == DialogResult.OK)
+            {
+                Console.WriteLine(sv.FileName);
+                StreamWriter sw = new StreamWriter(sv.FileName);
+                List <Client> clients=Client.getClientsList(datahelper);
+                foreach (Client c in clients)
+                {
+                    Console.WriteLine(c.Id);
+                    foreach (Medication m in Client.getMedications(datahelper, c.Id))
+                    {
+                        sw.WriteLine(c.Name + "; " + 
+                            c.Birthday + "; " +
+                            m.Name + "; " +
+                            m.Posology + "; " +
+                            m.Qtd + "; "
+                            );
+                    }
+                }
+                sw.Flush();
+                sw.Close();
+
             }
         }
     }
